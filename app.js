@@ -18,10 +18,16 @@ http.createServer(function (req, res) {
     return request(f.rss).pipe(new FeedParser({}))
   })
 
-
   var result = es.merge.apply(es.merge, streams)
   result.pipe(es.stringify()).pipe(res)
 }).listen(3000)
+
+function sinceLastWeek(pubdate) {
+  var pubDateObj = new Date(pubdate)
+  var oneWeekAgo = new Date();
+  oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+  return pubDateObj > oneWeekAgo;
+}
 
 //var streams = friends.map(function(f) {
 //  return request(f.rss).pipe(new FeedParser({});
