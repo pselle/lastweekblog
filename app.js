@@ -4,6 +4,7 @@ yaml = require('js-yaml')
   , es = require('event-stream')
   , FeedParser = require('feedparser')
   , http = require('http')
+  , _ = require('highland')
 
 friends = yaml.safeLoad(fs.readFileSync('friends.yml', 'utf-8'))
 lastWeek = 1 // Find out how to look for files from last week
@@ -18,27 +19,20 @@ http.createServer(function (req, res) {
     return request(f.rss).pipe(new FeedParser({}))
   })
 
+
   var result = es.merge.apply(es.merge, streams)
-  result.pipe(es.stringify()).pipe(res)
+  var latest = _(result).filter(sinceLastWeek).map(function(post) {
+    return {
+              name: post.title
+    }
+  })
+  latest.pipe(es.stringify()).pipe(res)
 }).listen(3000)
 
-function sinceLastWeek(pubdate) {
-  var pubDateObj = new Date(pubdate)
+function sinceLastWeek(post) {
+  var pubDateObj = new Date(post.pubdate)
   var oneWeekAgo = new Date();
   oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
   return pubDateObj > oneWeekAgo;
 }
-
-//var streams = friends.map(function(f) {
-//  return request(f.rss).pipe(new FeedParser({});
-//}
-
-
-// friends.map(function annotate(curr, index, arr) {
-//   curr.posts = [];
-//   curr.postCount = 0;
-//   return curr;
-// });
-//
-// console.log(friends);
 

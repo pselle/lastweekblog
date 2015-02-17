@@ -3,6 +3,7 @@
   "dependencies": {
     "event-stream": "^3.2.2",
     "feedparser": "^0.19.2",
+    "highland": "^2.3.0",
     "js-yaml": "^3.2.6",
     "request": "^2.53.0"
   }
