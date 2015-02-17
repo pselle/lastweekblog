@@ -9,3 +9,11 @@ XXXXXX- Queue up promises to populate the object
 - Get ye data
 And get back a JSON object of those blogs/titles
 - When all requests are done, return the JSON object
+
+
+ALL DONE
+
+TODO
+???
+UI? Commandline interface?
+CLI = easier to automate??
