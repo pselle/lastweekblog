@@ -7,7 +7,6 @@ yaml = require('js-yaml')
   , _ = require('highland')
 
 friends = yaml.safeLoad(fs.readFileSync('friends.yml', 'utf-8'))
-lastWeek = 1 // Find out how to look for files from last week
 
 http.createServer(function (req, res) {
 //  var streams = ['https://gist.githubusercontent.com/nathanbowser/395a49b40425ae9d6f3a/raw/4d2c3e838a6850cde97264e0d67e3f22c02cf5c9/gistfile1.txt',
