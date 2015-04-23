@@ -1,5 +1,6 @@
 {
-  "name": "whatsblog",
+  "name": "last-week-blog",
+  "repository": "https://github.com/pselle/lastweekblog",
   "dependencies": {
     "event-stream": "^3.2.2",
     "feedparser": "^0.19.2",
