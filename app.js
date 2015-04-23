@@ -1,4 +1,4 @@
-yaml = require('js-yaml')
+var yaml = require('js-yaml')
   , fs = require('fs')
   , request = require('request')
   , es = require('event-stream')
@@ -6,7 +6,9 @@ yaml = require('js-yaml')
   , http = require('http')
   , _ = require('highland')
 
-friends = yaml.safeLoad(fs.readFileSync('friends.yml', 'utf-8'))
+var friends = yaml.safeLoad(fs.readFileSync('friends.yml', 'utf-8'))
+
+var port = process.env.PORT || 5000;
 
 http.createServer(function (req, res) {
   var streams = friends.map(function(f) {
@@ -20,7 +22,7 @@ http.createServer(function (req, res) {
       + post.pubdate + " from " + post.meta.title + "<br>"
   })
   latest.pipe(res)
-}).listen(3000)
+}).listen(port)
 
 function sinceLastWeek(post) {
   var pubDateObj = new Date(post.pubdate)

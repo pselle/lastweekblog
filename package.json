@@ -7,5 +7,8 @@
     "highland": "^2.3.0",
     "js-yaml": "^3.2.6",
     "request": "^2.53.0"
+  },
+  "engines": {
+    "node": "0.12.2"
   }
 }
