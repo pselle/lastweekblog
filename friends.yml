@@ -9,3 +9,11 @@
 - name: Recurse Center
   blog: Recurse Center Blog
   rss: https://www.recurse.com/blog.rss
+
+- name: NYT Technology
+  blog: NYT
+  rss: http://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+
+- name: Bits Blog
+  blog: NYT Bits
+  rss: http://bits.blogs.nytimes.com/feed/

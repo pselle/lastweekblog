@@ -15,7 +15,6 @@ http.createServer(function (req, res) {
     return request(f.rss).pipe(new FeedParser({}))
   })
 
-
   var result = es.merge.apply(es.merge, streams)
   var latest = _(result).filter(sinceLastWeek).map(function(post) {
     return "<a href='" + post.link + "'>" + post.title + "</a>, on "
